@@ -65,6 +65,7 @@
     "scope": "\\S+.*"
   },
   "dependencies": {
-    "github": "^9.2.0"
+    "github": "^9.2.0",
+    "github-webhook-handler": "^0.6.0"
   }
 }
