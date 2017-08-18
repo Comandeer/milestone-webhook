@@ -1,0 +1,67 @@
+{
+  "name": "@comandeer/milestone-webhook",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Webhook for checking pull request's milestone",
+  "main": "app.js",
+  "scripts": {
+  	"lint": "eslint lib/**/*.js tests/*.js app.js",
+    "pretest": "npm run lint",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "test": "nyc mocha tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Comandeer/milestone-webhook.git"
+  },
+  "keywords": [
+    "github",
+    "milestone",
+    "ckeditor"
+  ],
+  "author": "Comandeer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Comandeer/milestone-webhook/issues"
+  },
+  "homepage": "https://github.com/Comandeer/milestone-webhook#readme",
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "codecov": "^2.3.0",
+    "commitplease": "^2.7.10",
+    "cz-conventional-changelog": "^2.0.0",
+    "eslint": "^4.4.1",
+    "mocha": "^3.5.0",
+    "nyc": "^11.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "nyc": {
+    "include": [
+      "lib/**/*.js"
+    ],
+    "exclude": [
+      "tests/**/*.js"
+    ]
+  },
+  "commitplease": {
+    "style": "angular",
+    "types": [
+      "feat",
+      "fix",
+      "docs",
+      "style",
+      "refactor",
+      "perf",
+      "test",
+      "build",
+      "ci",
+      "chore",
+      "revert"
+    ],
+    "scope": "\\S+.*"
+  }
+}
