@@ -16,10 +16,10 @@ This hook uses exclusively conventions from CKEditor 4 workflow:
 	* `4.x.y` – next minor release; merged to `master`
 	* `4.x.0` – next major release; merged to `major`
 	* `Backlog` – done when it's done; merged to `master`
-	* no milestone (done when it's done although it probably shouldn't be done; merged to `master`
+	* no milestone – done when it's done although it probably shouldn't be done; merged to `master`
 * Based on the milestone of PR's parent issue, PR should be merged into appropriate branch (`master` or `major`).
 
-Based on this conventions, it finds the PR's parent issue (via its name) and determine appropriate branch using its milestone.
+Based on this conventions, it finds the PR's parent issue (via branch's name or [PR's descrition](https://help.github.com/articles/closing-issues-using-keywords/)) and determine appropriate branch using its milestone.
 
 It needs 4 environment variables:
 
