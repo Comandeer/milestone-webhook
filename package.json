@@ -5,7 +5,7 @@
   "description": "Webhook for checking pull request's milestone",
   "main": "app.js",
   "scripts": {
-  	"lint": "eslint lib/**/*.js tests/*.js app.js",
+    "lint": "eslint lib/**/*.js tests/*.js app.js",
     "pretest": "npm run lint",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "test": "nyc mocha tests/*.js"
@@ -63,5 +63,8 @@
       "revert"
     ],
     "scope": "\\S+.*"
+  },
+  "dependencies": {
+    "github": "^9.2.0"
   }
 }
