@@ -1,6 +1,6 @@
 const http = require( 'http' );
 const createHandler = require( 'github-webhook-handler' );
-const handlePR = require( './lib/handlePR' );
+const { handlePR } = require( './lib/lib' );
 const handler = createHandler( {
 	path: '/webhook',
 	secret: process.env.GH_SECRET
