@@ -2,7 +2,7 @@
 
 const chai = require( 'chai' );
 const expect = chai.expect;
-const { getParentIssue, getBranchFromMilestone, getBranchFromLabel, handlePR } = require( '../lib/lib' );
+const { getParentIssue, getBranchFromMilestone, getBranchFromLabels, getBranchFromLabel, handlePR } = require( '../lib/lib' );
 
 describe( 'library methods', () => {
 	it( 'are functions', () => {
@@ -78,6 +78,68 @@ describe( 'library methods', () => {
 
 			inputs.forEach( ( input ) => {
 				expect( getBranchFromMilestone( input ) ).to.equal( 'major' );
+			} );
+		} );
+	} );
+
+	describe( 'getBranchFromLabels', () => {
+		it( 'returns appropriate branch name', () => {
+			// [ labels array, expected branch ]
+			const inputs = [
+				[
+					null,
+					null
+				],
+
+				[
+					{
+						name: 'target:master'
+					},
+
+					null
+				],
+
+				[
+					[
+						{
+							name: 'target:master'
+						}
+					],
+
+					'master'
+				],
+
+				[
+					[
+						{
+							name: 'target: major'
+						},
+
+						{
+							name: 'target: master'
+						}
+					],
+
+					'major'
+				],
+
+				[
+					[
+						{
+							name: 'hublabubla'
+						},
+
+						{
+							name: 'blurgh'
+						}
+					],
+
+					null
+				]
+			];
+
+			inputs.forEach( ( [ labels, expected ] ) => {
+				expect( getBranchFromLabels( labels ) ).to.equal( expected );
 			} );
 		} );
 	} );
