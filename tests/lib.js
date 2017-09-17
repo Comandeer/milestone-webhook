@@ -2,7 +2,7 @@
 
 const chai = require( 'chai' );
 const expect = chai.expect;
-const { getParentIssue, getBranchFromMilestone, handlePR } = require( '../lib/lib' );
+const { getParentIssue, getBranchFromMilestone, getBranchFromLabel, handlePR } = require( '../lib/lib' );
 
 describe( 'library methods', () => {
 	it( 'are functions', () => {
@@ -78,6 +78,23 @@ describe( 'library methods', () => {
 
 			inputs.forEach( ( input ) => {
 				expect( getBranchFromMilestone( input ) ).to.equal( 'major' );
+			} );
+		} );
+	} );
+
+	describe( 'getBranchFromLabel', () => {
+		it( 'returns appropriate branch name', () => {
+			const inputs = {
+				'target:master': 'master',
+				'TARGET:major': 'major',
+				'target: master': 'master',
+				'notarget:master': null,
+				'master': null,
+				'major': null
+			};
+
+			Object.keys( inputs ).forEach( ( input ) => {
+				expect( getBranchFromLabel( input ) ).to.equal( inputs[ input ] );
 			} );
 		} );
 	} );
